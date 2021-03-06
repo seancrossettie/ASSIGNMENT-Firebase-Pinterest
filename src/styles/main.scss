@@ -12,6 +12,10 @@ nav {
   height: 56px;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%
 }
 
 .btn {
@@ -19,21 +23,31 @@ nav {
   color: black;
   transition: background-color .001s;
   font-size: 12pt;
-  font-weight: bold;
+  font-weight: 600;
   height: 48px;
 }
 
-nav .btn {
-  margin-left: 2px;
-  margin-right: 2px;
+.btn:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+#corner-logo {
+  max-width: 20px;
+  max-height: 20px;
+  transition: background-color .001s;
+}
+
+#corner-logo:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+#boards-page {
+  background-color: black;
+  color: white;
 }
 
 .wrapper {
   position: relative;
   display: flex;
   margin-right: auto;
-}
-
-.btn:hover {
-  background-color: rgb(240, 240, 240);
 }
