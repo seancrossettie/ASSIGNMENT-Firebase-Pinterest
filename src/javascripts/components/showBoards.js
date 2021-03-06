@@ -4,7 +4,7 @@ const showBoards = (array) => {
                                                       <div class="card-body">
                                                       <img src="${item.image}" class="card-img-top" alt="${item.image}">
                                                         <h8 class="card-title">"${item.title}"</h8>
-                                                        <button type="button" class="btn" id="${item.firebaseKey}--pins">Pins</button>
+                                                        <button type="button" class="btn rounded-pill" id="${item.firebaseKey}--pins">Pins</button>
                                                       </div>
                                                     </div>`;
   });

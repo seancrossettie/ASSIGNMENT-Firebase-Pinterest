@@ -1,6 +1,5 @@
 const navBar = () => {
   document.querySelector('#navigation').innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent">
-                                                        <a class="navbar-brand" href="#">Pretty Much Pinterest</a>
                                                         <button 
                                                           class="navbar-toggler" 
                                                           type="button" 
@@ -12,19 +11,19 @@ const navBar = () => {
                                                         >
                                                           <span class="navbar-toggler-icon"></span>
                                                         </button>
-                                                        <div class="collapse navbar-collapse" id="navbarNav">
+                                                        <div class="collapse navbar-collapse me-2" id="navbarNav">
+                                                        <button class="btn" <img src="./documentation/pinterest-logo-png-1982.png" alt=""></button>
                                                         <ul class="navbar-nav mr-auto">
                                                           <li class="nav-item active">
-                                                            <a class="nav-link" href="#" id="board-page">Boards</a>
+                                                            <button class="btn rounded-pill me-2" href="#" id="board-page">Boards</button>
                                                           </li>
                                                           <li class="nav-item active">
-                                                            <a class="nav-link" href="#" id="pins-page">Pins</a>
+                                                            <button class="btn rounded-pill me-2" href="#" id="pins-page">Pins</button>
                                                           </li>
                                                         </ul>
                                                         <div id="logout-button"></div>
                                                       </div>
-                                                    </nav>
-                                                    <h1>Boards</h1>`;
+                                                    </nav>`;
 };
 
 export default navBar;
