@@ -1,12 +1,12 @@
 const showBoards = (array) => {
   array.forEach((item) => {
     document.querySelector('#boards').innerHTML += `<div class="card" style="width: 18rem;">
-                                                    <img src="${item.Image}" class="card-img-top" alt="${item.Image}">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">"${item.Title}"</h5>
-                                                      <a href="#" class="btn btn-primary" id="${item.firebaseKey}--pins>Go somewhere</a>
-                                                    </div>
-                                                  </div>`;
+                                                      <div class="card-body">
+                                                      <img src="${item.image}" class="card-img-top" alt="${item.image}">
+                                                        <h8 class="card-title">"${item.title}"</h8>
+                                                        <button type="button" class="btn" id="${item.firebaseKey}--pins">Pins</button>
+                                                      </div>
+                                                    </div>`;
   });
 };
 
