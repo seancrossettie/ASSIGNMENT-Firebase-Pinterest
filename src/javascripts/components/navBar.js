@@ -11,16 +11,27 @@ const navBar = () => {
                                                         >
                                                           <span class="navbar-toggler-icon"></span>
                                                         </button>
-                                                        <div class="collapse navbar-collapse me-2" id="navbarNav">
+                                                        <div class="collapse navbar-collapse me-2" id="navbar">
                                                         <button class="btn" <img src="./documentation/pinterest-logo-png-1982.png" alt=""></button>
                                                         <ul class="navbar-nav mr-auto">
                                                           <li class="nav-item active">
-                                                            <button class="btn rounded-pill me-2" href="#" id="board-page">Boards</button>
+                                                            <button class="btn rounded-pill me-2" href="#" id="boards-page">Boards</button>
                                                           </li>
                                                           <li class="nav-item active">
                                                             <button class="btn rounded-pill me-2" href="#" id="pins-page">Pins</button>
                                                           </li>
+                                                          <li class="nav-item active">
+                                                            <button class="btn rounded-pill me-2" href="#" id="favorites-page">Favorites</button>
+                                                          </li>
                                                         </ul>
+                                                        <div class="wrapper mr-auto" id="search-bar">
+                                                          <input
+                                                            type="text"
+                                                            class="form-control rounded-pill"
+                                                            placeholder="Search"
+                                                            aria-label="Search"
+                                                          >
+                                                        </div>
                                                         <div id="logout-button"></div>
                                                       </div>
                                                     </nav>`;
