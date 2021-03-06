@@ -23,7 +23,6 @@ nav {
   color: black;
   transition: background-color .001s;
   font-size: 12pt;
-  font-weight: 600;
   height: 48px;
 }
 
@@ -50,4 +49,15 @@ nav {
   position: relative;
   display: flex;
   margin-right: auto;
+}
+
+.form-control {
+  background-color: rgb(240, 240, 240);
+  color: black;
+  transition: background-color .001s;
+  height: 48px;
+}
+
+.form-control:hover {
+  background-color: rgb(225, 225, 225);
 }
