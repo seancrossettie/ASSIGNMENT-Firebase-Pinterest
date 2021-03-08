@@ -1,8 +1,9 @@
 import axios from 'axios';
-import firebaseConfig from '../apiKeys';
+import firebaseConfig from '../auth/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
+// GET BOARDS
 const getBoards = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/boards.json`)
     .then((response) => {
@@ -16,4 +17,11 @@ const getBoards = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getBoards;
+// DELETE BOARDS
+const deleteBoards = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/boards/${firebaseKey}.json`)
+    .then(() => getBoards().then((boardArray) => resolve(boardArray)))
+    .catch((error) => reject(error));
+});
+
+export { deleteBoards, getBoards };
