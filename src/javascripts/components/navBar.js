@@ -14,6 +14,8 @@ const navBar = () => {
                                                           <li class="nav-item active">
                                                             <button class="btn rounded-pill" href="#" id="favorites-page">Favorites</button>
                                                           </li>
+                                                          <li class="nav-item active" id="create-button">
+                                                          </li>
                                                         </ul>
                                                         <div class="wrapper mr-auto" id="search-bar">
                                                           <form>

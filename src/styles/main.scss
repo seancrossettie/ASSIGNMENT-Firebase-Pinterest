@@ -18,12 +18,13 @@ nav {
   width: 100%
 }
 
-.btn {
+nav .btn {
   background-color: transparent;
   color: black;
   transition: background-color .001s;
   font-size: 12pt;
   height: 48px;
+  font-weight: bold;
 }
 
 .btn:hover {
