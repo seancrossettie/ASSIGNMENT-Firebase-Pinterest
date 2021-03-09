@@ -6,7 +6,7 @@ const navBar = () => {
                                                           </a>
                                                         <ul class="navbar-nav mr-2">
                                                           <li class="nav-item active">
-                                                            <button class="btn rounded-pill" href="#" id="boards-page">Boards</button>
+                                                            <button class="btn rounded-pill m" href="#" id="boards-page">Boards</button>
                                                           </li>
                                                           <li class="nav-item active">
                                                             <button class="btn rounded-pill" href="#" id="pins-page">Pins</button>

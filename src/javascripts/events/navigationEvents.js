@@ -11,6 +11,10 @@ const navigationEvents = () => {
     getBoards().then((boardsArray) => showBoards(boardsArray));
   });
 
+  document.querySelector('#corner-logo').addEventListener('click', () => {
+    getBoards().then((boardsArray) => showBoards(boardsArray));
+  });
+
   document.querySelector('#pins-page').addEventListener('click', () => {
     getPins().then((pinsArray) => showPins(pinsArray));
   });
