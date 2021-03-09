@@ -1,5 +1,5 @@
 const navBar = () => {
-  document.querySelector('#navigation').innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-transparent d-flex flex-nowrap mt-3">
+  document.querySelector('#navigation').innerHTML = `<nav class="navbar fixed-top navbar-expand-lg navbar-light d-flex flex-nowrap mt-3">
                                                         <div class="collapse navbar-collapse me-2" id="navbar">
                                                           <a href="#">
                                                             <img class="mx-2 rounded-pill" src="./documentation/pinterest-logo-png-1982.png" alt="" id="corner-logo">
