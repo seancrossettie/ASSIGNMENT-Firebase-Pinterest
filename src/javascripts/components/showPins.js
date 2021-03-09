@@ -3,14 +3,13 @@ const showPins = (array) => {
   document.querySelector('#create-button').innerHTML = '<button class="btn rounded-pill" href="#" id="create-new-pin">Create Pin</button>';
 
   array.forEach((item) => {
-    document.querySelector('#cards').innerHTML += `<div class="card" style="width: 18rem;">
-                                                      <div class="card-body">
-                                                      <img src="${item.image}" class="card-img-top" alt="${item.image}">
-                                                        <h8 class="card-title">"${item.title}"</h8>
-                                                        <button type="button" class="btn rounded-pill" id="pins--${item.firebaseKey}">Pins</button>
-                                                        <button type="button" class="btn rounded-pill" id="delete-board--${item.firebaseKey}">Delete Board</button>
-                                                      </div>
-                                                    </div>`;
+    document.querySelector('#cards').innerHTML += `<div class="card text-white m-2">
+                                                    <img src="${item.image}" class="img-fluid" alt="${item.image}">
+                                                    <div class="card-img-overlay img-fluid">
+                                                      <h5 class="card-title">${item.title}</h5>
+                                                      <button type="button" class="btn rounded-pill" id="delete-pin--${item.firebaseKey}">Delete Pin</button>
+                                                    </div>
+                                                  </div>`;
   });
 };
 
