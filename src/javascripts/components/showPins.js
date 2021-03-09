@@ -1,6 +1,6 @@
-const showBoards = (array) => {
+const showPins = (array) => {
   document.querySelector('#cards').innerHTML = '';
-  document.querySelector('#create-button').innerHTML = '<button class="btn rounded-pill" href="#" id="create-new-board">Create Board</button>';
+  document.querySelector('#create-button').innerHTML = '<button class="btn rounded-pill" href="#" id="create-new-pin">Create Pin</button>';
 
   array.forEach((item) => {
     document.querySelector('#cards').innerHTML += `<div class="card" style="width: 18rem;">
@@ -14,4 +14,8 @@ const showBoards = (array) => {
   });
 };
 
-export default showBoards;
+const emptyBoard = () => {
+  document.querySelector('#cards').innerHTML = '<h1>There arent any Pins on this board yet</h1>';
+};
+
+export { showPins, emptyBoard };
