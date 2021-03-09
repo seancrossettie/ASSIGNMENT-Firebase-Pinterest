@@ -22,4 +22,10 @@ const deletePins = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getPins, deletePins };
+const getBoardPins = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
+export { getPins, deletePins, getBoardPins };
