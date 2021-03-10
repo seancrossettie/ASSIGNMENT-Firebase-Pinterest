@@ -17,6 +17,13 @@ const getBoards = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+// GET SINGLE BOARD
+const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/boards/${boardId}/.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 // DELETE BOARDS
 const deleteBoards = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/boards/${firebaseKey}.json`)
@@ -24,4 +31,4 @@ const deleteBoards = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { deleteBoards, getBoards };
+export { deleteBoards, getBoards, getSingleBoard };
