@@ -7,6 +7,7 @@ import { deleteBoardPins, boardPinsAll } from '../helpers/data/boardPinData';
 import boardTitle from '../components/boardTitle';
 import { getBoards, createNewBoard } from '../helpers/data/boardData';
 import addBoardForm from '../components/forms/addBoardForm';
+import addPinForm from '../components/forms/addPinForm';
 
 const domEvents = () => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -36,6 +37,11 @@ const domEvents = () => {
     // CLICK EVENT FOR DISPLAYING ADD BOARD FORM
     if (e.target.id.includes('create-new-board')) {
       addBoardForm();
+    }
+
+    // CLICK EVEN FOR DISPLAYING ADD PIN FORM
+    if (e.target.id.includes('create-new-pin')) {
+      addPinForm();
     }
 
     // CLICK EVENT FOR POSTING A NEW BOARD TO FIREBASE

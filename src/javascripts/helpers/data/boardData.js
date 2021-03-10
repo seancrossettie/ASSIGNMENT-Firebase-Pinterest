@@ -10,6 +10,7 @@ const getBoards = () => new Promise((resolve, reject) => {
       if (response.data) {
         const boardArray = Object.values(response.data);
         resolve(boardArray);
+        console.warn(boardArray);
       } else {
         resolve([]);
       }
