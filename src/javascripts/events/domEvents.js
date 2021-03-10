@@ -3,6 +3,7 @@ import { deletePins } from '../helpers/data/pinData';
 import { showPins } from '../components/showPins';
 import { deleteBoardPins, boardPinsAll } from '../helpers/data/boardPinData';
 import boardTitle from '../components/boardTitle';
+import { getBoards } from '../helpers/data/boardData';
 
 const domEvents = () => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -14,7 +15,9 @@ const domEvents = () => {
     // CLICK EVENT FOR DELETEING A PIN
     if (e.target.id.includes('delete-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
-      deletePins(firebaseKey).then((pinsArray) => showPins(pinsArray));
+      deletePins(firebaseKey)
+        .then(() => getBoards()
+          .then((boardsArray) => showBoards(boardsArray)));
     }
 
     // CLICK EVENT FOR DISPLAYING A SPECIFIC BOARD'S PINS
