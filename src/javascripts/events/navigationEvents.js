@@ -9,14 +9,17 @@ const navigationEvents = () => {
 
   document.querySelector('#boards-page').addEventListener('click', () => {
     getBoards().then((boardsArray) => showBoards(boardsArray));
+    document.querySelector('#board-title').innerHTML = '';
   });
 
   document.querySelector('#corner-logo').addEventListener('click', () => {
     getBoards().then((boardsArray) => showBoards(boardsArray));
+    document.querySelector('#board-title').innerHTML = '';
   });
 
   document.querySelector('#pins-page').addEventListener('click', () => {
     getPins().then((pinsArray) => showPins(pinsArray));
+    document.querySelector('#board-title').innerHTML = '';
   });
 };
 

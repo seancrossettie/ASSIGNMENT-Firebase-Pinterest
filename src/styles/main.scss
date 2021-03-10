@@ -28,7 +28,20 @@ nav .btn {
   font-weight: bold;
 }
 
+#google-auth {
+  background-color: transparent;
+  color: black;
+  transition: background-color .001s;
+  font-size: 12pt;
+  height: 48px;
+  font-weight: bold;
+}
+
 .btn:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+#google-auth:hover {
   background-color: rgb(240, 240, 240);
 }
 
@@ -63,11 +76,3 @@ nav .btn {
 .form-control:hover {
   background-color: rgb(225, 225, 225);
 }
-
-// #search-icon {
-//   position: absolute;
-//   top: 9px;
-//   right: 8px;
-//   width: 12px;
-//   visibility: hidden;
-// }

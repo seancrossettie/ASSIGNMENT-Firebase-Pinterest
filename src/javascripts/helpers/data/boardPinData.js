@@ -1,4 +1,4 @@
-import { deleteBoards } from './boardData';
+import { deleteBoards, getSingleBoard } from './boardData';
 import { getBoardPins, deletePins } from './pinData';
 
 const deleteBoardPins = (boardId) => new Promise((resolve, reject) => {
@@ -9,4 +9,15 @@ const deleteBoardPins = (boardId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export default deleteBoardPins;
+const boardPinsAll = (boardId) => new Promise((resolve, reject) => {
+  const board = getSingleBoard(boardId);
+  const boardPins = getBoardPins(boardId);
+
+  Promise.all([board, boardPins])
+    .then(([boardResponse, boardPinResponse]) => resolve(
+      { board: boardResponse, boardPins: boardPinResponse }
+    ))
+    .catch((error) => reject(error));
+});
+
+export { deleteBoardPins, boardPinsAll };
