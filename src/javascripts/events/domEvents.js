@@ -1,9 +1,12 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import showBoards from '../components/showBoards';
 import { deletePins } from '../helpers/data/pinData';
 import { showPins } from '../components/showPins';
 import { deleteBoardPins, boardPinsAll } from '../helpers/data/boardPinData';
 import boardTitle from '../components/boardTitle';
-import { getBoards } from '../helpers/data/boardData';
+import { getBoards, createNewBoard } from '../helpers/data/boardData';
+import addBoardForm from '../components/forms/addBoardForm';
 
 const domEvents = () => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -12,6 +15,7 @@ const domEvents = () => {
       const boardId = e.target.id.split('--')[1];
       deleteBoardPins(boardId).then((boardsArray) => showBoards(boardsArray));
     }
+
     // CLICK EVENT FOR DELETEING A PIN
     if (e.target.id.includes('delete-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
@@ -27,6 +31,24 @@ const domEvents = () => {
         boardTitle(boardInfoObject.board);
         showPins(boardInfoObject.boardPins);
       });
+    }
+
+    // CLICK EVENT FOR DISPLAYING ADD BOARD FORM
+    if (e.target.id.includes('create-new-board')) {
+      addBoardForm();
+    }
+
+    // CLICK EVENT FOR POSTING A NEW BOARD TO FIREBASE
+    if (e.target.id.includes('submit-new-board')) {
+      e.preventDefault();
+      const boardObject = {
+        title: document.querySelector('#new-board-title').value,
+        image: document.querySelector('#new-board-url').value,
+        favorite: document.querySelector('#favorite-board').checked,
+        uid: firebase.auth().currentUser.uid,
+      };
+
+      createNewBoard(boardObject).then((boardsArray) => showBoards(boardsArray));
     }
   });
 };

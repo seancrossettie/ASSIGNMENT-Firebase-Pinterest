@@ -3,7 +3,7 @@ import firebaseConfig from '../auth/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-// GET BOARDS
+// READ BOARDS
 const getBoards = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/boards.json`)
     .then((response) => {
@@ -13,11 +13,22 @@ const getBoards = () => new Promise((resolve, reject) => {
       } else {
         resolve([]);
       }
-    })
-    .catch((error) => reject(error));
+    }).catch((error) => reject(error));
 });
 
-// GET SINGLE BOARD
+// CREATE BOARD
+const createNewBoard = (newBoardObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/boards.json`, newBoardObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/boards/${response.data.name}.json`, body)
+        .then(() => {
+          getBoards().then((boardsArray) => resolve(boardsArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+// READ SINGLE BOARD PINS
 const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/boards/${boardId}/.json`)
     .then((response) => resolve(response.data))
@@ -31,4 +42,9 @@ const deleteBoards = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { deleteBoards, getBoards, getSingleBoard };
+export {
+  deleteBoards,
+  getBoards,
+  getSingleBoard,
+  createNewBoard,
+};
