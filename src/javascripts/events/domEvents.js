@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import showBoards from '../components/showBoards';
-import { deletePins } from '../helpers/data/pinData';
+import { deletePins, createNewPin } from '../helpers/data/pinData';
 import { showPins } from '../components/showPins';
 import { deleteBoardPins, boardPinsAll } from '../helpers/data/boardPinData';
 import boardTitle from '../components/boardTitle';
@@ -55,6 +55,19 @@ const domEvents = () => {
       };
 
       createNewBoard(boardObject).then((boardsArray) => showBoards(boardsArray));
+    }
+
+    if (e.target.id.includes('submit-new-pin')) {
+      e.preventDefault();
+      const pinObject = {
+        title: document.querySelector('#new-pin-title').value,
+        image: document.querySelector('#new-pin-url').value,
+        board_id: document.querySelector('#board').value,
+        favorite: document.querySelector('#favorite-pin').checked,
+        uid: firebase.auth().currentUser.uid,
+      };
+
+      createNewPin(pinObject).then((pinsArray) => showPins(pinsArray));
     }
   });
 };
