@@ -8,6 +8,7 @@ import boardTitle from '../components/boardTitle';
 import { getBoards, createNewBoard } from '../helpers/data/boardData';
 import addBoardForm from '../components/forms/addBoardForm';
 import addPinForm from '../components/forms/addPinForm';
+import formModal from '../components/forms/formModal';
 
 const domEvents = () => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -42,6 +43,11 @@ const domEvents = () => {
     // CLICK EVEN FOR DISPLAYING ADD PIN FORM
     if (e.target.id.includes('create-new-pin')) {
       addPinForm();
+    }
+
+    // ClICK EVENT FOR DISPLAYING FORM MODAL FOR UPDATING PINS
+    if (e.target.id.includes('update-pin')) {
+      formModal();
     }
 
     // CLICK EVENT FOR POSTING A NEW BOARD TO FIREBASE

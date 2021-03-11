@@ -31,7 +31,7 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// CREATES PIN
+// CREATE PIN
 const createNewPin = (pinObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/pins.json`, pinObject)
     .then((response) => {
@@ -43,9 +43,17 @@ const createNewPin = (pinObject) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+// UPDATE PIN
+const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/pins/${firebaseKey}/.json`, pinObject)
+    .then(() => getPins().then((pinsArray) => resolve(pinsArray)))
+    .catch((error) => reject(error));
+});
+
 export {
   getPins,
   deletePins,
   getBoardPins,
-  createNewPin
+  createNewPin,
+  updatePin,
 };
