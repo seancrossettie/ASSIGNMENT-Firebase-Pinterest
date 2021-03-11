@@ -43,6 +43,13 @@ const createNewPin = (pinObject) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+// GET SINGLE PIN
+const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins/${firebaseKey}.json`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 // UPDATE PIN
 const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/pins/${firebaseKey}/.json`, pinObject)
@@ -55,5 +62,6 @@ export {
   deletePins,
   getBoardPins,
   createNewPin,
+  getSinglePin,
   updatePin,
 };

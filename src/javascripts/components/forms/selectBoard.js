@@ -1,9 +1,9 @@
 import { getBoards } from '../../helpers/data/boardData';
 
 const selectBoard = (pinObject = {}) => {
-  let formString = `<label for="board">Pin to a Board</label>
+  let formString = `<label for="board">Choose a Board</label>
                       <select class="form-control" id="board" required>
-                        <option value="">Select a Board</option>`;
+                        <option value=""></option>`;
 
   getBoards().then((boardsArray) => {
     boardsArray.forEach((board) => {
