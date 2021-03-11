@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import showBoards from '../components/showBoards';
-import { deletePins, createNewPin } from '../helpers/data/pinData';
+import { deletePins, createNewPin, getSinglePin } from '../helpers/data/pinData';
 import { showPins } from '../components/showPins';
 import { deleteBoardPins, boardPinsAll } from '../helpers/data/boardPinData';
 import boardTitle from '../components/boardTitle';
@@ -9,6 +9,7 @@ import { getBoards, createNewBoard } from '../helpers/data/boardData';
 import addBoardForm from '../components/forms/addBoardForm';
 import addPinForm from '../components/forms/addPinForm';
 import formModal from '../components/forms/formModal';
+import editPinForm from '../components/forms/editPinForm';
 
 const domEvents = () => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -47,7 +48,17 @@ const domEvents = () => {
 
     // ClICK EVENT FOR DISPLAYING FORM MODAL FOR UPDATING PINS
     if (e.target.id.includes('update-pin')) {
-      formModal();
+      const firebaseKey = e.target.id.split('--')[1];
+      formModal('Pin a New Board');
+      getSinglePin(firebaseKey).then((pinObject) => editPinForm(pinObject));
+    }
+
+    // CLICK EVENT FOR UPDATING A BOOK 
+    if (e.target.id.includes('update-this-pin')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const pinObject = {
+      };
     }
 
     // CLICK EVENT FOR POSTING A NEW BOARD TO FIREBASE
