@@ -1,11 +1,13 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import axios from 'axios';
 import firebaseConfig from '../auth/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
 // GETS ALL PINS
-const getPins = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json`)
+const getPins = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
         const pinsArray = Object.values(response.data);
@@ -18,9 +20,9 @@ const getPins = () => new Promise((resolve, reject) => {
 });
 
 // DELETES PINS
-const deletePins = (firebaseKey) => new Promise((resolve, reject) => {
+const deletePins = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/pins/${firebaseKey}.json`)
-    .then(() => getPins().then((pinArray) => resolve(pinArray)))
+    .then(() => getPins(uid).then((pinArray) => resolve(pinArray)))
     .catch((error) => reject(error));
 });
 
@@ -32,13 +34,13 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
 });
 
 // CREATE PIN
-const createNewPin = (pinObject) => new Promise((resolve, reject) => {
+const createNewPin = (pinObject, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/pins.json`, pinObject)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/pins/${response.data.name}.json`, body)
         .then(() => {
-          getPins().then((pinsArray) => resolve(pinsArray));
+          getPins(uid).then((pinsArray) => resolve(pinsArray));
         });
     }).catch((error) => reject(error));
 });
@@ -53,7 +55,7 @@ const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
 // UPDATE PIN
 const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/pins/${firebaseKey}/.json`, pinObject)
-    .then(() => getPins().then((pinsArray) => resolve(pinsArray)))
+    .then(() => getPins(firebase.auth().currentUser.uid).then((pinsArray) => resolve(pinsArray)))
     .catch((error) => reject(error));
 });
 
