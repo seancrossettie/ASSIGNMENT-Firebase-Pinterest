@@ -1,7 +1,7 @@
-const navBar = () => {
+const navBar = (user) => {
   document.querySelector('#navigation').innerHTML = `
     <nav class="navbar fixed-top navbar-expand-lg navbar-light mt-3">
-      <img class="mx-2 rounded-pill" src="./documentation/pinterest-logo-png-1982.png" alt="" id="corner-logo">
+      <img class="mx-1 rounded-pill" src="./documentation/pinterest-logo-png-1982.png" id="corner-logo"/>
       <button
         class="navbar-toggler"
         type="button"
@@ -37,10 +37,13 @@ const navBar = () => {
             >
           </form>
         </div>
+        <div class="nav-item mr-1">
+          <img src="${user.photoURL}" class="rounded-circle" alt="${user.photoURL}" id="profile-icon">
+        </div>
         <div id="logout-button"></div>
       </div>
     </nav>
-    `;
+  `;
 };
 
 export default navBar;

@@ -46,9 +46,10 @@ nav {
 }
 
 #corner-logo {
-  max-width: 25px;
-  max-height: 25px;
+  max-width: 50px;
+  max-height: 50px;
   transition: background-color .001s;
+  padding: 10px;
 }
 
 #corner-logo:hover {
@@ -75,4 +76,9 @@ nav {
 
 .form-control:hover {
   background-color: rgb(225, 225, 225);
+}
+
+#profile-icon {
+  width: 40px;
+  height: 40px;
 }
