@@ -10,8 +10,8 @@ const showPins = (array) => {
           <img src="${item.image}" class="card-img alt="${item.image}">
           <div class="card-body">
             <h5 class="card-title">${item.title}</h5>
-            <button type="button" class="btn rounded-pill" id="delete-pin--${item.firebaseKey}">Delete Pin</button>
-            <button type="button" data-toggle="modal" data-target="#formModal" class="btn rounded-pill" id="update-pin--${item.firebaseKey}">Update Pin</button>
+            <button type="button" class="btn rounded-pill" id="delete-pin--${item.firebaseKey}">Delete</button>
+            <button type="button" data-toggle="modal" data-target="#formModal" class="btn rounded-pill" id="update-pin--${item.firebaseKey}">Update</button>
           </div>
         </div>
       </div>
