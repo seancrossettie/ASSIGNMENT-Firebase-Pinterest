@@ -1,6 +1,6 @@
 const navBar = (user) => {
   document.querySelector('#navigation').innerHTML = `
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light mt-3">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light mb-3 pb-5 pt-5">
       <img class="mx-1 rounded-pill" src="./documentation/pinterest-logo-png-1982.png" id="corner-logo"/>
       <button
         class="navbar-toggler"
