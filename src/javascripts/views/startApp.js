@@ -9,7 +9,7 @@ import navigationEvents from '../events/navigationEvents';
 const startApp = (user) => {
   domBuilder();
   domEvents(user.uid);
-  navBar();
+  navBar(user);
   navigationEvents(user.uid);
   logoutButton();
   getBoards(user.uid).then((boards) => showBoards(boards));
