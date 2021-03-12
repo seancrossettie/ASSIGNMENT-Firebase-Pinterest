@@ -18,15 +18,13 @@ const domEvents = (uid) => {
     // CLICK EVENT FOR DELETING A BOARD AND ALL ASSOCIATED PINS
     if (e.target.id.includes('delete-board')) {
       const boardId = e.target.id.split('--')[1];
-      deleteBoardPins(boardId).then((boardsArray) => showBoards(boardsArray));
+      deleteBoardPins(boardId).then(() => getBoards(uid).then((boardsArray) => showBoards(boardsArray)));
     }
 
     // CLICK EVENT FOR DELETEING A PIN
     if (e.target.id.includes('delete-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
-      deletePins(firebaseKey)
-        .then(() => getBoards(uid)
-          .then((boardsArray) => showBoards(boardsArray)));
+      deletePins(firebaseKey).then(() => getPins(uid).then((pinsArray) => showPins(pinsArray)));
     }
 
     // CLICK EVENT FOR DISPLAYING A SPECIFIC BOARD'S PINS
