@@ -51,7 +51,7 @@ const domEvents = (uid) => {
     // ClICK EVENT FOR DISPLAYING FORM MODAL FOR UPDATING PINS
     if (e.target.id.includes('update-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
-      formModal('Pin a New Board');
+      formModal();
       getSinglePin(firebaseKey).then((pinObject) => editPinForm(pinObject));
     }
 
