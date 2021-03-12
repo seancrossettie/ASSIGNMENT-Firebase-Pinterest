@@ -13,7 +13,7 @@ import addPinForm from '../components/forms/addPinForm';
 import formModal from '../components/forms/formModal';
 import editPinForm from '../components/forms/editPinForm';
 
-const domEvents = () => {
+const domEvents = (uid) => {
   document.querySelector('body').addEventListener('click', (e) => {
     // CLICK EVENT FOR DELETING A BOARD AND ALL ASSOCIATED PINS
     if (e.target.id.includes('delete-board')) {
@@ -25,7 +25,7 @@ const domEvents = () => {
     if (e.target.id.includes('delete-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
       deletePins(firebaseKey)
-        .then(() => getBoards()
+        .then(() => getBoards(uid)
           .then((boardsArray) => showBoards(boardsArray)));
     }
 
@@ -100,7 +100,7 @@ const domEvents = () => {
 
     // CLICK EVENT FOR CLOSING MODAL
     if (e.target.id.includes('close-modal')) {
-      getPins().then((pinsArray) => showPins(pinsArray));
+      getPins(uid).then((pinsArray) => showPins(pinsArray));
       document.querySelector('#board-title').innerHTML = '';
     }
   });

@@ -6,13 +6,13 @@ import showBoards from '../components/showBoards';
 import domEvents from '../events/domEvents';
 import navigationEvents from '../events/navigationEvents';
 
-const startApp = () => {
+const startApp = (user) => {
   domBuilder();
   domEvents();
   navBar();
-  navigationEvents();
+  navigationEvents(user.uid);
   logoutButton();
-  getBoards().then((boards) => showBoards(boards));
+  getBoards(user.uid).then((boards) => showBoards(boards));
 };
 
 export default startApp;
