@@ -55,7 +55,7 @@ const domEvents = (uid) => {
       getSinglePin(firebaseKey).then((pinObject) => editPinForm(pinObject));
     }
 
-    // CLICK EVENT FOR UPDATING A BOOK
+    // CLICK EVENT FOR UPDATING A PIN
     if (e.target.id.includes('update-this-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
       e.preventDefault();
@@ -66,8 +66,7 @@ const domEvents = (uid) => {
         favorite: document.querySelector('#favorite-pin').checked,
         uid: firebase.auth().currentUser.uid
       };
-      updatePin(firebaseKey, pinObject).then((pinsArray) => showPins(pinsArray));
-
+      updatePin(firebaseKey, pinObject).then(() => getPins(uid).then((pinsArray) => showPins(pinsArray)));
       $('#formModal').modal('toggle');
     }
 
@@ -81,7 +80,7 @@ const domEvents = (uid) => {
         uid: firebase.auth().currentUser.uid,
       };
 
-      createNewBoard(boardObject).then((boardsArray) => showBoards(boardsArray));
+      createNewBoard(boardObject).then(() => getBoards(uid).then((boardsArray) => showBoards(boardsArray)));
     }
 
     // CLICK EVENT FOR CREATING A NEW PIN
@@ -95,7 +94,7 @@ const domEvents = (uid) => {
         uid: firebase.auth().currentUser.uid,
       };
 
-      createNewPin(pinObject).then((pinsArray) => showPins(pinsArray));
+      createNewPin(pinObject).then(() => getPins(uid).then((pinsArray) => showPins(pinsArray)));
     }
 
     // CLICK EVENT FOR CLOSING MODAL
